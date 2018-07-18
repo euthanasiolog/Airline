@@ -9,6 +9,9 @@ public class RegionalAirliner extends Airliner {
         super(model, kgFuelPerHour, range, seating);
     }
 
+    public RegionalAirliner() {
+    }
+
     @Override
     public String toString() {
         return "RegionalAirliner " + super.toString();

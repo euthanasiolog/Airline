@@ -15,6 +15,9 @@ public abstract class Airplane
         this.range = range;
     }
 
+    public Airplane() {
+    }
+
     @Override
     public String toString() {
         return

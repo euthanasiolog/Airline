@@ -11,6 +11,9 @@ public class Airfreighter extends Airplane {
         this.cargo = cargo;
     }
 
+    public Airfreighter() {
+    }
+
     @Override
     public String toString() {
         return "Airfreighter " + super.toString() +

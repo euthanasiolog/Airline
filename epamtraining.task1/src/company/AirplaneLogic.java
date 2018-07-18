@@ -1,8 +1,7 @@
 package company;
 
-import airplane.Airfreighter;
-import airplane.Airliner;
-import airplane.Airplane;
+import airplane.*;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -11,33 +10,52 @@ import java.util.Comparator;
  */
 public class AirplaneLogic {
 
-    private ArrayList<Airplane> allAirplanes;
+    private static ArrayList<Airplane> allAirplanes = new ArrayList<>();
 
-    public void addAirplane (Airplane airplane){
+    static {
+        Airfreighter airfreighter1 = new Airfreighter("cargo1", 2000, 1000, 3000);
+        Airfreighter airfreighter2 = new Airfreighter("cargo2", 1500, 1200, 2500);
+        NarrowBodyAirliner narrowBodyAirliner1 = new NarrowBodyAirliner("nliner1", 2500, 3000, 63);
+        NarrowBodyAirliner narrowBodyAirliner2 = new NarrowBodyAirliner("nliner2", 2000, 4000, 80);
+        RegionalAirliner regionalAirliner1 = new RegionalAirliner("regional1", 800, 900, 20);
+        RegionalAirliner regionalAirliner2 = new RegionalAirliner("regional2", 600, 1000, 30);
+        WideBodyAirliner wideBodyAirliner1 = new WideBodyAirliner("liner1", 6300, 5000, 400);
+        WideBodyAirliner wideBodyAirliner2 = new WideBodyAirliner("liner2", 7000, 6000, 600);
+        allAirplanes.add(airfreighter1);
+        allAirplanes.add(airfreighter2);
+        allAirplanes.add(regionalAirliner1);
+        allAirplanes.add(regionalAirliner2);
+        allAirplanes.add(narrowBodyAirliner1);
+        allAirplanes.add(narrowBodyAirliner2);
+        allAirplanes.add(wideBodyAirliner1);
+        allAirplanes.add(wideBodyAirliner2);
+     }
+
+    public static void addAirplane (Airplane airplane){
         allAirplanes.add(airplane);
     }
 
-    public void removeAirplane (Airplane airplane){
-        allAirplanes.remove(airplane);
-    }
+    public static void removeAirplane (int index){allAirplanes.remove(index);}
 
-    public void printAirplanes (){
+    public static void printAirplanes (){
+        int i = 1;
         for (Airplane airplane: allAirplanes){
-            System.out.println(airplane.toString());
+            System.out.println(i+". "+airplane.toString());
+            i++;
         }
     }
 
-    public void printRangeSortedAirplanes (){
+    public static void printRangeSortedAirplanes (){
         allAirplanes.stream().sorted(Comparator.comparingInt(Airplane::getRange)).
                 forEach(System.out::println);
     }
 
-    public void printAirplanesWithfRequiredFuelConsumption (int min, int max){
+    public static void printAirplanesWithfRequiredFuelConsumption (int min, int max){
         allAirplanes.stream().filter(airplane -> airplane.getKgFuelPerHour()>=min&airplane.getKgFuelPerHour()<=max).
                 forEach(System.out::println);
     }
 
-    public int getOverallCargo(){
+    public static int getOverallCargo(){
         int overAllCargo = 0;
         for (Airplane airplane:allAirplanes){
             if (airplane instanceof Airfreighter){
@@ -46,7 +64,7 @@ public class AirplaneLogic {
         }return overAllCargo;
     }
 
-    public int getOverallSeating() {
+    public static int getOverallSeating() {
         int overallSeating = 0;
         for (Airplane airplane:allAirplanes){
             if (airplane instanceof Airliner){

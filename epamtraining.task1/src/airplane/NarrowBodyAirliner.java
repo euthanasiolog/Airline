@@ -9,6 +9,9 @@ public class NarrowBodyAirliner extends Airliner {
         super(model, kgFuelPerHour, range, seating);
     }
 
+    public NarrowBodyAirliner() {
+    }
+
     @Override
     public String toString() {
         return "NarrowBodyAirliner " + super.toString();

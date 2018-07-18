@@ -9,6 +9,9 @@ public class WideBodyAirliner extends Airliner {
         super(model, kgFuelPerHour, range, seating);
     }
 
+    public WideBodyAirliner() {
+    }
+
     @Override
     public String toString() {
         return "WideBodyAirliner " + super.toString();

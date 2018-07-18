@@ -18,6 +18,9 @@ public abstract class Airliner extends Airplane {
         this.seating = seating;
     }
 
+    public Airliner() {
+    }
+
     public int getSeating() {
         return seating;
     }
