@@ -13,7 +13,7 @@ public final class Menu {
     private static final String INCORRECT_IN = "!!!------->PLEASE, ENTER THE CORRECT VALUE!";
     private static final String EXIT = "THANK YOU FOR CHOOSING OUR AIRLINES!";
     private static final String MAIN_MENU = "CHOOSE ACTION (ENTER NUMBER OF MENU POINT): \n 1. MANAGE AIRLINE \n 2. AIRLINE INFO \n 3. EXIT";
-    private static final String MENU_1 = "CHOOSE ACTION (ENTER NUMBER OF MENU POINT): \n 1.  SHOW ALL AIRPLANES/DELETE AIRPLANE \n 2. ADD AIRPLANE \n 3. BACK";
+    private static final String MENU_1 = "CHOOSE ACTION (ENTER NUMBER OF MENU POINT): \n 1. SHOW ALL AIRPLANES/DELETE AIRPLANE \n 2. ADD AIRPLANE \n 3. BACK";
     private static final String MENU_1_1 = "CHOOSE ACTION (ENTER NUMBER OF MENU POINT): \n 0. BACK \n 1. DELETE AIRPLANE (ENTER NUMBER OF AIRPLANE)";
     private static final String MENU_1_2 = "CHOOSE ACTION (ENTER NUMBER OF MENU POINT): \n 1. ADD AIRFREIGHTER \n 2. ADD REGIONAL LINER \n 3. ADD NARROW BODY LINER \n 4. ADD WIDE BODY LINER \n 5. BACK";
     private static final String MENU_1_2_11 = "FOR RETURN BACK ENTER 0 \n ENTER MODEL (STRING)";
@@ -281,7 +281,7 @@ public final class Menu {
     }
 
     public static void menu_1_2_23 (){
-        System.out.println(MENU_1_2_13);
+        System.out.println(MENU_1_2_13+" MAX RANGE = "+RegionalAirliner.getMaxRange());
     }
     public static void menu_1_2_23(String in, RegionalAirliner regionalAirliner) throws IOException {
         if (in.equals("0")){
@@ -289,7 +289,12 @@ public final class Menu {
             menu_1_2(MenuHelper.getIn());
         }
         try {
-            regionalAirliner.setRange(new Integer(in));
+            if (new Integer(in)<=RegionalAirliner.getMaxRange())
+            regionalAirliner.setRange(new Integer(in));else {
+                System.out.println(INCORRECT_IN);
+                menu_1_2_23();
+                menu_1_2_23(MenuHelper.getIn(), regionalAirliner);
+            }
         }catch (IllegalArgumentException e){
             System.out.println(INCORRECT_IN);
             menu_1_2_23();
@@ -349,7 +354,7 @@ public final class Menu {
     }
 
     public static void menu_1_2_33 (){
-        System.out.println(MENU_1_2_13);
+        System.out.println(MENU_1_2_13+" MAX RANGE = "+NarrowBodyAirliner.getMaxRange());
     }
     public static void menu_1_2_33(String in, NarrowBodyAirliner narrowBodyAirliner) throws IOException {
         if (in.equals("0")){
@@ -357,7 +362,12 @@ public final class Menu {
             menu_1_2(MenuHelper.getIn());
         }
         try {
-            narrowBodyAirliner.setRange(new Integer(in));
+            if (new Integer(in)<=NarrowBodyAirliner.getMaxRange())
+            narrowBodyAirliner.setRange(new Integer(in));else {
+                System.out.println(INCORRECT_IN);
+                menu_1_2_33();
+                menu_1_2_33(MenuHelper.getIn(), narrowBodyAirliner);
+            }
         }catch (IllegalArgumentException e){
             System.out.println(INCORRECT_IN);
             menu_1_2_33();
@@ -418,7 +428,7 @@ public final class Menu {
     }
 
     public static void menu_1_2_43 (){
-        System.out.println(MENU_1_2_13);
+        System.out.println(MENU_1_2_13+" MAX RANGE = "+WideBodyAirliner.getMaxRange());
     }
     public static void menu_1_2_43(String in, WideBodyAirliner wideBodyAirliner) throws IOException {
         if (in.equals("0")){
@@ -426,7 +436,12 @@ public final class Menu {
             menu_1_2(MenuHelper.getIn());
         }
         try {
-            wideBodyAirliner.setRange(new Integer(in));
+            if (new Integer(in)<=WideBodyAirliner.getMaxRange())
+            wideBodyAirliner.setRange(new Integer(in));else {
+                System.out.println(INCORRECT_IN);
+                menu_1_2_43();
+                menu_1_2_43(MenuHelper.getIn(), wideBodyAirliner);
+            }
         }catch (IllegalArgumentException e){
             System.out.println(INCORRECT_IN);
             menu_1_2_43();

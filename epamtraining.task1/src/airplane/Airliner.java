@@ -13,8 +13,8 @@ public abstract class Airliner extends Airplane {
                 '}';
     }
 
-    public Airliner(String model, int kgFuelPerHour, int range, int seating) {
-        super(model, kgFuelPerHour, range);
+    public Airliner(String model, int kgFuelPerHour, int seating) {
+        super(model, kgFuelPerHour);
         this.seating = seating;
     }
 

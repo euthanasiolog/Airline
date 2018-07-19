@@ -15,6 +15,11 @@ public abstract class Airplane
         this.range = range;
     }
 
+    public Airplane(String model, int kgFuelPerHour) {
+        this.model = model;
+        this.kgFuelPerHour = kgFuelPerHour;
+    }
+
     public Airplane() {
     }
 
