@@ -16,11 +16,11 @@ public final class Menu {
     private static final String MENU_1 = "CHOOSE ACTION (ENTER NUMBER OF MENU POINT): \n 1.  SHOW ALL AIRPLANES/DELETE AIRPLANE \n 2. ADD AIRPLANE \n 3. BACK";
     private static final String MENU_1_1 = "CHOOSE ACTION (ENTER NUMBER OF MENU POINT): \n 0. BACK \n 1. DELETE AIRPLANE (ENTER NUMBER OF AIRPLANE)";
     private static final String MENU_1_2 = "CHOOSE ACTION (ENTER NUMBER OF MENU POINT): \n 1. ADD AIRFREIGHTER \n 2. ADD REGIONAL LINER \n 3. ADD NARROW BODY LINER \n 4. ADD WIDE BODY LINER \n 5. BACK";
-    private static final String MENU_1_2_11 = "ENTER MODEL (STRING)";
-    private static final String MENU_1_2_12 = "ENTER FUEL CONSUMPTION (kg per hour)";
-    private static final String MENU_1_2_13 = "ENTER RANGE (km)";
-    private static final String MENU_1_2_14 = "ENTER CARGO (kg)";
-    private static final String MENU_1_2_24 = "ENTER SEATING (persons)";
+    private static final String MENU_1_2_11 = "FOR RETURN BACK ENTER 0 \n ENTER MODEL (STRING)";
+    private static final String MENU_1_2_12 = "FOR RETURN BACK ENTER 0 \n ENTER FUEL CONSUMPTION (kg per hour)";
+    private static final String MENU_1_2_13 = "FOR RETURN BACK ENTER 0 \n ENTER RANGE (km)";
+    private static final String MENU_1_2_14 = "FOR RETURN BACK ENTER 0 \n ENTER CARGO (kg)";
+    private static final String MENU_1_2_24 = "FOR RETURN BACK ENTER 0 \n ENTER SEATING (persons)";
     private static final String MENU_2 = "CHOOSE ACTION (ENTER NUMBER OF MENU POINT): \n 1. SHOW OVERALL CAPACITY \n 2. SORT AIRPLANES BY RANGE \n 3. SHOW AIRPLANES WITH REQUIRED FUEL CONSUMPTION \n 4. BACK";
     private static final String MENU_2_123 = "CHOOSE ACTION (ENTER NUMBER OF MENU POINT): \n 1. BACK";
     private static final String MENU_2_3_1 = "ENTER MIN VALUE";
@@ -181,12 +181,16 @@ public final class Menu {
         System.out.println(MENU_1_2_11);
     }
     public static void menu_1_2_11(String in, Airfreighter airfreighter) throws IOException {
+        if (in.equals("0")){
+            menu_1_2();
+            menu_1_2(MenuHelper.getIn());
+        }
         try {
             airfreighter.setModel(in);
         }catch (IllegalArgumentException e){
             System.out.println(INCORRECT_IN);
-            menu_1_2();
-            menu_1_2(MenuHelper.getIn());
+            menu_1_2_11();
+            menu_1_2_11(MenuHelper.getIn(), airfreighter);
         }
     }
 
@@ -194,12 +198,16 @@ public final class Menu {
         System.out.println(MENU_1_2_12);
     }
     public static void menu_1_2_12(String in, Airfreighter airfreighter) throws IOException{
+        if (in.equals("0")){
+            menu_1_2();
+            menu_1_2(MenuHelper.getIn());
+        }
         try {
             airfreighter.setKgFuelPerHour(new Integer(in));
         }catch (IllegalArgumentException e){
             System.out.println(INCORRECT_IN);
-            menu_1_2();
-            menu_1_2(MenuHelper.getIn());
+            menu_1_2_12();
+            menu_1_2_12(MenuHelper.getIn(), airfreighter);
         }
 
     }
@@ -208,12 +216,16 @@ public final class Menu {
         System.out.println(MENU_1_2_13);
     }
     public static void menu_1_2_13(String in, Airfreighter airfreighter) throws IOException {
+        if (in.equals("0")){
+            menu_1_2();
+            menu_1_2(MenuHelper.getIn());
+        }
         try {
             airfreighter.setRange(new Integer(in));
         }catch (IllegalArgumentException e){
             System.out.println(INCORRECT_IN);
-            menu_1_2();
-            menu_1_2(MenuHelper.getIn());
+            menu_1_2_13();
+            menu_1_2_13(MenuHelper.getIn(), airfreighter);
         }
     }
 
@@ -221,12 +233,16 @@ public final class Menu {
         System.out.println(MENU_1_2_14);
     }
     public static void menu_1_2_14(String in, Airfreighter airfreighter) throws IOException {
+        if (in.equals("0")){
+            menu_1_2();
+            menu_1_2(MenuHelper.getIn());
+        }
         try {
             airfreighter.setCargo(new Integer(in));
         }catch (IllegalArgumentException e){
             System.out.println(INCORRECT_IN);
-            menu_1_2();
-            menu_1_2(MenuHelper.getIn());
+            menu_1_2_14();
+            menu_1_2_14(MenuHelper.getIn(), airfreighter);
         }
     }
 
@@ -234,12 +250,16 @@ public final class Menu {
         System.out.println(MENU_1_2_11);
     }
     public static void menu_1_2_21(String in, RegionalAirliner regionalAirliner) throws IOException {
+        if (in.equals("0")){
+            menu_1_2();
+            menu_1_2(MenuHelper.getIn());
+        }
         try {
             regionalAirliner.setModel(in);
         }catch (IllegalArgumentException e){
             System.out.println(INCORRECT_IN);
-            menu_1_2();
-            menu_1_2(MenuHelper.getIn());
+            menu_1_2_21();
+            menu_1_2_21(MenuHelper.getIn(), regionalAirliner);
         }
     }
 
@@ -247,12 +267,16 @@ public final class Menu {
         System.out.println(MENU_1_2_12);
     }
     public static void menu_1_2_22(String in, RegionalAirliner regionalAirliner) throws IOException {
+        if (in.equals("0")){
+            menu_1_2();
+            menu_1_2(MenuHelper.getIn());
+        }
         try {
             regionalAirliner.setKgFuelPerHour(new Integer(in));
         }catch (IllegalArgumentException e){
             System.out.println(INCORRECT_IN);
-            menu_1_2();
-            menu_1_2(MenuHelper.getIn());
+            menu_1_2_22();
+            menu_1_2_22(MenuHelper.getIn(), regionalAirliner);
         }
     }
 
@@ -260,12 +284,16 @@ public final class Menu {
         System.out.println(MENU_1_2_13);
     }
     public static void menu_1_2_23(String in, RegionalAirliner regionalAirliner) throws IOException {
+        if (in.equals("0")){
+            menu_1_2();
+            menu_1_2(MenuHelper.getIn());
+        }
         try {
             regionalAirliner.setRange(new Integer(in));
         }catch (IllegalArgumentException e){
             System.out.println(INCORRECT_IN);
-            menu_1_2();
-            menu_1_2(MenuHelper.getIn());
+            menu_1_2_23();
+            menu_1_2_23(MenuHelper.getIn(), regionalAirliner);
         }
     }
 
@@ -273,12 +301,16 @@ public final class Menu {
         System.out.println(MENU_1_2_24);
     }
     public static void menu_1_2_24(String in, RegionalAirliner regionalAirliner) throws IOException {
+        if (in.equals("0")){
+            menu_1_2();
+            menu_1_2(MenuHelper.getIn());
+        }
         try {
             regionalAirliner.setSeating(new Integer(in));
         }catch (IllegalArgumentException e){
             System.out.println(INCORRECT_IN);
-            menu_1_2();
-            menu_1_2(MenuHelper.getIn());
+            menu_1_2_24();
+            menu_1_2_24(MenuHelper.getIn(), regionalAirliner);
         }
     }
 
@@ -286,12 +318,16 @@ public final class Menu {
         System.out.println(MENU_1_2_11);
     }
     public static void menu_1_2_31(String in, NarrowBodyAirliner narrowBodyAirliner) throws IOException {
+        if (in.equals("0")){
+            menu_1_2();
+            menu_1_2(MenuHelper.getIn());
+        }
         try {
             narrowBodyAirliner.setModel(in);
         }catch (IllegalArgumentException e){
             System.out.println(INCORRECT_IN);
-            menu_1_2();
-            menu_1_2(MenuHelper.getIn());
+            menu_1_2_31();
+            menu_1_2_31(MenuHelper.getIn(), narrowBodyAirliner);
         }
     }
 
@@ -299,12 +335,16 @@ public final class Menu {
         System.out.println(MENU_1_2_12);
     }
     public static void menu_1_2_32(String in, NarrowBodyAirliner narrowBodyAirliner) throws IOException {
+        if (in.equals("0")){
+            menu_1_2();
+            menu_1_2(MenuHelper.getIn());
+        }
         try {
             narrowBodyAirliner.setKgFuelPerHour(new Integer(in));
         }catch (IllegalArgumentException e){
             System.out.println(INCORRECT_IN);
-            menu_1_2();
-            menu_1_2(MenuHelper.getIn());
+            menu_1_2_32();
+            menu_1_2_32(MenuHelper.getIn(), narrowBodyAirliner);
         }
     }
 
@@ -312,12 +352,16 @@ public final class Menu {
         System.out.println(MENU_1_2_13);
     }
     public static void menu_1_2_33(String in, NarrowBodyAirliner narrowBodyAirliner) throws IOException {
+        if (in.equals("0")){
+            menu_1_2();
+            menu_1_2(MenuHelper.getIn());
+        }
         try {
             narrowBodyAirliner.setRange(new Integer(in));
         }catch (IllegalArgumentException e){
             System.out.println(INCORRECT_IN);
-            menu_1_2();
-            menu_1_2(MenuHelper.getIn());
+            menu_1_2_33();
+            menu_1_2_33(MenuHelper.getIn(), narrowBodyAirliner);
         }
     }
 
@@ -325,12 +369,16 @@ public final class Menu {
         System.out.println(MENU_1_2_24);
     }
     public static void menu_1_2_34(String in, NarrowBodyAirliner narrowBodyAirliner) throws IOException {
+        if (in.equals("0")){
+            menu_1_2();
+            menu_1_2(MenuHelper.getIn());
+        }
         try {
             narrowBodyAirliner.setSeating(new Integer(in));
         }catch (IllegalArgumentException e){
             System.out.println(INCORRECT_IN);
-            menu_1_2();
-            menu_1_2(MenuHelper.getIn());
+            menu_1_2_34();
+            menu_1_2_34(MenuHelper.getIn(), narrowBodyAirliner);
         }
     }
 
@@ -339,12 +387,16 @@ public final class Menu {
         System.out.println(MENU_1_2_11);
     }
     public static void menu_1_2_41(String in, WideBodyAirliner wideBodyAirliner) throws IOException {
+        if (in.equals("0")){
+            menu_1_2();
+            menu_1_2(MenuHelper.getIn());
+        }
         try {
             wideBodyAirliner.setModel(in);
         }catch (IllegalArgumentException e){
             System.out.println(INCORRECT_IN);
-            menu_1_2();
-            menu_1_2(MenuHelper.getIn());
+            menu_1_2_41();
+            menu_1_2_41(MenuHelper.getIn(), wideBodyAirliner);
         }
     }
 
@@ -352,12 +404,16 @@ public final class Menu {
         System.out.println(MENU_1_2_12);
     }
     public static void menu_1_2_42(String in, WideBodyAirliner wideBodyAirliner) throws IOException {
+        if (in.equals("0")){
+            menu_1_2();
+            menu_1_2(MenuHelper.getIn());
+        }
         try {
             wideBodyAirliner.setKgFuelPerHour(new Integer(in));
         }catch (IllegalArgumentException e){
             System.out.println(INCORRECT_IN);
-            menu_1_2();
-            menu_1_2(MenuHelper.getIn());
+            menu_1_2_42();
+            menu_1_2_42(MenuHelper.getIn(), wideBodyAirliner);
         }
     }
 
@@ -365,12 +421,16 @@ public final class Menu {
         System.out.println(MENU_1_2_13);
     }
     public static void menu_1_2_43(String in, WideBodyAirliner wideBodyAirliner) throws IOException {
+        if (in.equals("0")){
+            menu_1_2();
+            menu_1_2(MenuHelper.getIn());
+        }
         try {
             wideBodyAirliner.setRange(new Integer(in));
         }catch (IllegalArgumentException e){
             System.out.println(INCORRECT_IN);
-            menu_1_2();
-            menu_1_2(MenuHelper.getIn());
+            menu_1_2_43();
+            menu_1_2_43(MenuHelper.getIn(), wideBodyAirliner);
         }
     }
 
@@ -378,12 +438,16 @@ public final class Menu {
         System.out.println(MENU_1_2_24);
     }
     public static void menu_1_2_44(String in, WideBodyAirliner wideBodyAirliner) throws IOException {
+        if (in.equals("0")){
+            menu_1_2();
+            menu_1_2(MenuHelper.getIn());
+        }
         try {
             wideBodyAirliner.setSeating(new Integer(in));
         }catch (IllegalArgumentException e){
             System.out.println(INCORRECT_IN);
-            menu_1_2();
-            menu_1_2(MenuHelper.getIn());
+            menu_1_2_44();
+            menu_1_2_44(MenuHelper.getIn(), wideBodyAirliner);
         }
     }
 
