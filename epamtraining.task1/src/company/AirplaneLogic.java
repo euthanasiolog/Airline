@@ -1,37 +1,70 @@
 package company;
 
-import airplane.*;
+import entity.*;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 
 /**
  * Created by piatr on 17.07.18.
  */
 public class AirplaneLogic {
 
-    private static ArrayList<Airplane> allAirplanes = new ArrayList<>();
+    private static List<AirplaneEntity> allAirplanes = new ArrayList<>();
 
     static {
-        Airfreighter airfreighter1 = new Airfreighter("cargo1", 2000, 1000, 3000);
-        Airfreighter airfreighter2 = new Airfreighter("cargo2", 1500, 1200, 2500);
-        NarrowBodyAirliner narrowBodyAirliner1 = new NarrowBodyAirliner("nliner1", 2500, 3000, 63);
-        NarrowBodyAirliner narrowBodyAirliner2 = new NarrowBodyAirliner("nliner2", 2000, 4000, 80);
-        RegionalAirliner regionalAirliner1 = new RegionalAirliner("regional1", 800, 900, 20);
-        RegionalAirliner regionalAirliner2 = new RegionalAirliner("regional2", 600, 1000, 30);
-        WideBodyAirliner wideBodyAirliner1 = new WideBodyAirliner("liner1", 6300, 5000, 400);
-        WideBodyAirliner wideBodyAirliner2 = new WideBodyAirliner("liner2", 7000, 6000, 600);
-        allAirplanes.add(airfreighter1);
-        allAirplanes.add(airfreighter2);
-        allAirplanes.add(regionalAirliner1);
-        allAirplanes.add(regionalAirliner2);
-        allAirplanes.add(narrowBodyAirliner1);
-        allAirplanes.add(narrowBodyAirliner2);
-        allAirplanes.add(wideBodyAirliner1);
-        allAirplanes.add(wideBodyAirliner2);
+        AirfreighterEntity airfreighterEntity1 = new AirfreighterEntity();
+        AirfreighterEntity airfreighterEntity2 = new AirfreighterEntity();
+        AirlinerEntity airlinerEntity1 = new AirlinerEntity();
+        AirlinerEntity airlinerEntity2 = new AirlinerEntity();
+        AirlinerEntity airlinerEntity3 = new AirlinerEntity();
+        AirlinerEntity airlinerEntity4 = new AirlinerEntity();
+        AirlinerEntity airlinerEntity5 = new AirlinerEntity();
+        AirlinerEntity airlinerEntity6 = new AirlinerEntity();
+        airfreighterEntity1.setModel("af1");
+        airfreighterEntity1.setRange(5000);
+        airfreighterEntity1.setKgFuelPerHour(850);
+        airfreighterEntity1.setCargo(8000);
+        airfreighterEntity2.setModel("af2");
+        airfreighterEntity2.setRange(3000);
+        airfreighterEntity2.setKgFuelPerHour(350);
+        airfreighterEntity2.setCargo(5000);
+        airlinerEntity1.setModel("al1");
+        airlinerEntity1.setRange(9000);
+        airlinerEntity1.setKgFuelPerHour(5000);
+        airlinerEntity1.setSeating(500);
+        airlinerEntity2.setModel("al2");
+        airlinerEntity2.setRange(6000);
+        airlinerEntity2.setKgFuelPerHour(4200);
+        airlinerEntity2.setSeating(300);
+        airlinerEntity3.setModel("al3");
+        airlinerEntity3.setRange(9500);
+        airlinerEntity3.setKgFuelPerHour(7000);
+        airlinerEntity3.setSeating(800);
+        airlinerEntity4.setModel("al4");
+        airlinerEntity4.setRange(900);
+        airlinerEntity4.setKgFuelPerHour(590);
+        airlinerEntity4.setSeating(50);
+        airlinerEntity5.setModel("al5");
+        airlinerEntity5.setRange(2500);
+        airlinerEntity5.setKgFuelPerHour(800);
+        airlinerEntity5.setSeating(90);
+        airlinerEntity6.setModel("al6");
+        airlinerEntity6.setRange(2000);
+        airlinerEntity6.setKgFuelPerHour(1900);
+        airlinerEntity6.setSeating(110);
+        addAirplane(airfreighterEntity1);
+        addAirplane(airfreighterEntity2);
+        addAirplane(airlinerEntity1);
+        addAirplane(airlinerEntity2);
+        addAirplane(airlinerEntity3);
+        addAirplane(airlinerEntity4);
+        addAirplane(airlinerEntity5);
+        addAirplane(airlinerEntity6);
      }
 
-    public static void addAirplane (Airplane airplane){
+    public static void addAirplane (AirplaneEntity airplane){
         allAirplanes.add(airplane);
     }
 
@@ -39,36 +72,36 @@ public class AirplaneLogic {
 
     public static void printAirplanes (){
         int i = 1;
-        for (Airplane airplane: allAirplanes){
+        for (AirplaneEntity airplane: allAirplanes){
             System.out.println(i+". "+airplane.toString());
             i++;
         }
     }
 
     public static void printRangeSortedAirplanes (){
-        allAirplanes.stream().sorted(Comparator.comparingInt(Airplane::getRange)).
+        allAirplanes.stream().sorted(Comparator.comparingInt(AirplaneEntity::getRange)).
                 forEach(System.out::println);
     }
 
-    public static void printAirplanesWithfRequiredFuelConsumption (int min, int max){
+    public static void printAirplanesWithRequiredFuelConsumption (int min, int max){
         allAirplanes.stream().filter(airplane -> airplane.getKgFuelPerHour()>=min&airplane.getKgFuelPerHour()<=max).
                 forEach(System.out::println);
     }
 
     public static int getOverallCargo(){
         int overAllCargo = 0;
-        for (Airplane airplane:allAirplanes){
-            if (airplane instanceof Airfreighter){
-                overAllCargo+=((Airfreighter) airplane).getCargo();
+        for (AirplaneEntity airplane:allAirplanes){
+            if (airplane instanceof AirfreighterEntity){
+                overAllCargo+=((AirfreighterEntity) airplane).getCargo();
             }
         }return overAllCargo;
     }
 
     public static int getOverallSeating() {
         int overallSeating = 0;
-        for (Airplane airplane:allAirplanes){
-            if (airplane instanceof Airliner){
-                overallSeating+=((Airliner)airplane).getSeating();
+        for (AirplaneEntity airplane:allAirplanes){
+            if (airplane instanceof AirlinerEntity){
+                overallSeating+=((AirlinerEntity)airplane).getSeating();
             }
         }return overallSeating;
     }
