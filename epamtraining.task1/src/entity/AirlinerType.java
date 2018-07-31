@@ -7,7 +7,9 @@ import java.util.Comparator;
  */
 public enum AirlinerType implements Comparator<AirlinerType> {
     RegionalLiner(1500), NarrowBodyLiner(3500), WideBodyLiner(15000), Indefinite(Integer.MAX_VALUE);
+
    private int maxRange;
+
    AirlinerType(int maxRange){
        this.maxRange = maxRange;
    }
