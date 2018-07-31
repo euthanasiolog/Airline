@@ -3,19 +3,12 @@ package entity;
 /**
  * Created by piatr on 17.07.18.
  */
-public abstract class AirplaneEntity
-{
+public abstract class Airplane {
     private String model;
     private int kgFuelPerHour;
     private int range;
 
-    public AirplaneEntity(String model, int kgFuelPerHour, int range) {
-        this.model = model;
-        this.kgFuelPerHour = kgFuelPerHour;
-        this.range = range;
-    }
-
-    public AirplaneEntity() {
+    public Airplane() {
     }
 
     @Override
@@ -68,7 +61,7 @@ public abstract class AirplaneEntity
             return false;
         if (this.getClass()!=obj.getClass())
             return false;
-        AirlinerEntity other = (AirlinerEntity) obj;
+        Airliner other = (Airliner) obj;
         if (!model.equals(other.getModel()))
             return false;
         if (kgFuelPerHour!=other.getKgFuelPerHour())

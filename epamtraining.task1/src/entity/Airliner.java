@@ -1,7 +1,5 @@
 package entity;
 
-import company.AirlinerType;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -9,18 +7,12 @@ import java.util.Comparator;
 /**
  * Created by piatr on 17.07.18.
  */
-public class AirlinerEntity extends AirplaneEntity {
+public class Airliner extends Airplane {
     private int seating;
 
     private AirlinerType airlinerType = AirlinerType.Indefinite;
 
-    public AirlinerEntity(String model, int kgFuelPerHour, int seating, int maxRange) {
-        super(model, kgFuelPerHour, maxRange);
-        this.seating = seating;
-        setAirlinerType(maxRange);
-    }
-
-    public AirlinerEntity() {
+    public Airliner() {
     }
 
     public AirlinerType getAirlinerType() {
@@ -62,7 +54,7 @@ public class AirlinerEntity extends AirplaneEntity {
     public boolean equals(Object obj) {
         if (!super.equals(obj))
             return false;
-        AirlinerEntity other = (AirlinerEntity) obj;
+        Airliner other = (Airliner) obj;
         if (seating!=other.seating)
             return false;
         if (!airlinerType.equals(other.airlinerType))

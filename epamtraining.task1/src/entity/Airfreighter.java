@@ -3,20 +3,15 @@ package entity;
 /**
  * Created by piatr on 17.07.18.
  */
-public class AirfreighterEntity extends AirplaneEntity {
+public class Airfreighter extends Airplane {
     private int cargo;
 
-    public AirfreighterEntity(String model, int kgFuelPerHour, int range, int cargo) {
-        super(model, kgFuelPerHour, range);
-        this.cargo = cargo;
-    }
-
-    public AirfreighterEntity() {
+    public Airfreighter() {
     }
 
     @Override
     public String toString() {
-        return "AirfreighterEntity " + super.toString() +
+        return super.toString() +
                 ", cargo = " + cargo;
     }
 
@@ -32,7 +27,7 @@ public class AirfreighterEntity extends AirplaneEntity {
     public boolean equals(Object obj) {
       if (!super.equals(obj))
           return false;
-      AirfreighterEntity other = (AirfreighterEntity) obj;
+      Airfreighter other = (Airfreighter) obj;
       if (cargo!=other.getCargo())
           return false;
       return true;
