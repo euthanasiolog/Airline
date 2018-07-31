@@ -13,6 +13,7 @@ public enum AirlinerType implements Comparator<AirlinerType> {
    AirlinerType(int maxRange){
        this.maxRange = maxRange;
    }
+
    public int getMaxRange(){
        return maxRange;
    }

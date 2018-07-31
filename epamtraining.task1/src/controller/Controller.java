@@ -145,7 +145,7 @@ public class Controller {
     }
 
     private static void setRange (Airplane airplane) {
-        LOGGER.info("FOR RETURN BACK ENTER 0 \n ENTER RANGE (km), MAX - 10.000km!");
+        LOGGER.info("FOR RETURN BACK ENTER 0 \n ENTER RANGE (km), MAX - 15.000km!");
         try {
             String in = getIn();
             switch (in){
@@ -153,7 +153,7 @@ public class Controller {
                     addAirfreighter();
                     break;
                 default:
-                    try {
+                    if (new Integer(in)<=15000&new Integer(in)>0){
                         if (new Integer(in)<=15000) {
                             airplane.setRange(new Integer(in));
                             setFuelConsumption(airplane);
@@ -161,9 +161,8 @@ public class Controller {
                             LOGGER.info("!!!------->PLEASE, ENTER THE CORRECT VALUE!");
                             setRange(airplane);
                         }
-                    } catch (IllegalArgumentException e) {
+                    } else {
                         LOGGER.info("!!!------->PLEASE, ENTER THE CORRECT VALUE!");
-                        LOGGER.error(e);
                         setRange(airplane);
                     }
                     break;
